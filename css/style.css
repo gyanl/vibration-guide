@@ -1,5 +1,101 @@
+#clock{
+	position: absolute;
+	z-index: 10;
+	display: none;
+	left: 18%;
+	top: 30%;
+}
+
+#expLog{
+	position: absolute;
+	margin-left: 12px;
+	margin-bottom: 12px;
+	bottom: 0;
+	z-index: 0;
+	font-size: 4px;
+}
+
+.btnstyle{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 32px;
+  position: absolute;
+}
+
+#btn1{
+  margin-left: 93px;
+  margin-top: 0px;
+}
+
+#btn2{
+  margin-left: 140px;
+  margin-top: 12px;
+}
+
+#btn3{
+  margin-left: 174px;
+  margin-top: 47px;
+}
+
+#btn4{
+  margin-left: 187px;
+  margin-top: 93px;
+}
+
+#btn5{
+  margin-left: 174px;
+  margin-top: 140px;
+}
+
+#btn6{
+  margin-left: 140px;
+  margin-top: 174px;
+}
+
+#btn7{
+  margin-left: 93px;
+  margin-top: 187px;
+}
+
+#btn8{
+  margin-left: 47px;
+  margin-top: 174px;
+}
+
+#btn9{
+  margin-left: 12px;
+  margin-top: 140px;
+}
+
+#btn10{
+  margin-left: 0px;
+  margin-top: 93px;
+}
+
+#btn11{
+  margin-left: 12px;
+  margin-top: 47px;
+}
+
+#btn12{
+  margin-left: 47px;
+  margin-top: 12px;
+}
+
+
+
 html{
 	height: 100%;
+	overflow-y: hidden;
 }
 
 body{
@@ -162,15 +258,15 @@ body{
 	display: inline-block;
 }
 
-button{
+.splbutton{
 	font-family: "Libre Franklin";
 	font-weight: 600;
 	font-size: 14px;
 	background: #847FA1;
-	color: #2B2743;
+	color: #FFFFFF;
 	border-radius: 6px;
-	padding: 14px 20px 14px 20px;
 	border: none;
+	padding: 16px 32px 16px 32px;
 	margin: 4px 4px 4px 4px;
 	-webkit-transition: .1s;
 	-o-transition: .1s;
@@ -185,23 +281,6 @@ button{
 
 .buttonActive:hover{
 	background: #FF775F;
-}
-
-button:hover{
-	background: #9f9bb5;
-	-webkit-transform: translateY(-2px);
-	    -ms-transform: translateY(-2px);
-	        transform: translateY(-2px);
-}
-
-button:focus{
-	outline:0;
-}
-
-button:active{
-	-webkit-transform: translateY(1px);
-	    -ms-transform: translateY(1px);
-	        transform: translateY(1px);
 }
 
 .results-background{
