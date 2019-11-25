@@ -1,9 +1,9 @@
 #clock{
 	position: absolute;
-	z-index: 10;
+	z-index: 0;
 	display: none;
-	left: 18%;
-	top: 30%;
+	padding-left: 18%;
+	padding-top: 200px;
 }
 
 #expLog{

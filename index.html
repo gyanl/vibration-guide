@@ -34,20 +34,36 @@
 <div id="expLog2">
 
 </div>
+<div id="expLog3">
+
+</div>
 
 <button id="start" class="splbutton" onclick="startTest()">Start the test</button><p>
 
 <script>
+
+document.getElementById('btn1').addEventListener("dblclick", playAudio("1"));
+document.getElementById('btn2').addEventListener("dblclick", playAudio("2"));
+document.getElementById('btn3').addEventListener("dblclick", playAudio("3"));
+document.getElementById('btn4').addEventListener("dblclick", playAudio("4"));
+document.getElementById('btn5').addEventListener("dblclick", playAudio("5"));
+document.getElementById('btn6').addEventListener("dblclick", playAudio("6"));
+document.getElementById('btn7').addEventListener("dblclick", playAudio("7"));
+document.getElementById('btn8').addEventListener("dblclick", playAudio("8"));
+document.getElementById('btn9').addEventListener("dblclick", playAudio("9"));
+document.getElementById('btn10').addEventListener("dblclick", playAudio("10"));
+document.getElementById('btn11').addEventListener("dblclick", playAudio("11"));
+document.getElementById('btn12').addEventListener("dblclick", playAudio("12"));
+
 var timeStamps = new Array();
 var expLog = document.getElementById("expLog");
 var expLog2 = document.getElementById("expLog2");
+var expLog3 = document.getElementById("expLog3");
 var clock = document.getElementById("clock");
 var activeBtn = "btn1";
+var nextBtn = "btn1";
 var num = 0;
-var x = event.touches[0].clientX;
-var y = event.touches[0].clientY;
-var btnY = btn1.offsetTop;
-var btnX = btn1.offsetLeft;
+
 function startTest() {
   document.documentElement.webkitRequestFullScreen();
   timeStamps.push(new Date());
@@ -56,50 +72,76 @@ function startTest() {
   document.getElementById("start").style.display = "none";
   num++;
 }
+
+function playAudio(audioId){
+  var sndloc = "audio/sel/"+audioId+".mp3";
+  var snd = new Audio(sndloc);
+  snd.play();
+}
+
+function blankFn(){
+
+}
+
 function setActive(buttonid) {
     activeBtn = "btn" + num;
     if (buttonid.localeCompare(activeBtn) == 0) {
           timeStamps.push(new Date());
           expLog.innerHTML += '<p>' + buttonid + ' clicked<br>' + timeStamps[num].getTime();
-          var activeBtn = "btn" + num;
+          activeBtn = "btn" + num;
           num++;
+          nextBtn = "btn" + num;
         }
     if (num == 13) {
       endExperiment();
     }
     beep(buttonid);
 }
+
 function beep(buttonId) {
-    const audioId = buttonId.charAt(buttonId.length - 1)
+    var audioId = document.getElementById(buttonId).name;
     var snd = new Audio("audio/"+audioId+".mp3");
     snd.play();
 }
+
+
 function showCoordinates(event) {
   var duration = 0;
-      document.getElementById("coordinates").innerHTML = x + ", " + y;
-      document.getElementById("coordinates2").innerHTML = btnX + ", " + btnY;
-      document.getElementById("coordinates3").innerHTML = " ";
-      document.getElementById("coordinates4").innerHTML = " ";
-      document.getElementById("coordinates5").innerHTML = " ";
-  if (Math.abs(y-btnY) < 40){
-    duration = duration + 1000/(Math.abs(y-btnY));
-  document.getElementById("coordinates3").innerHTML = "Y matches";
+  var btnY = document.getElementById(nextBtn).offsetTop + 19;
+  console.log(btnY);
+  var btnX = document.getElementById(nextBtn).offsetLeft + 19;
+  console.log(btnX);
+  var x = event.touches[0].clientX;
+  var y = event.touches[0].clientY;
+  document.getElementById('expLog3').innerHTML = "";
+  if (Math.abs(y-btnY) < 30){
+    duration = duration + 10;
+    // document.getElementById('expLog3').innerHTML += "y match " + btnY + " : " + y + "\n";
   }
-  if (Math.abs(x-btnX) < 40){
-    duration = duration + 1000/(Math.abs(x-btnX));
-    document.getElementById("coordinates4").innerHTML = "X matches";
+  if (Math.abs(x-btnX) < 30){
+    duration = duration + 10;
+    // document.getElementById('expLog3').innerHTML += "x match" + btnX + " : " + x + "\n";
   }
   if (((Math.abs(y-btnY) < 30)) && (Math.abs(x-btnX) < 30)){
-    beep();
+    duration = 40;
+    // document.getElementById('expLog3').innerHTML = "Both match";
   }
-  navigator.vibrate(duration);
-}
+
+  if (((Math.abs(y-btnY) < 16)) && (Math.abs(x-btnX) < 16)){
+    var audioId = document.getElementById(nextBtn).name;
+    var snd = new Audio("audio/"+audioId+".mp3");
+    snd.play();
+  }
+  navigator.vibrate(duration, 5);
+
 function endExperiment() {
   for (var i = 1; i < timeStamps.length; i++) {
     document.getElementById('expLog2').innerHTML += "Button " + i + " took " + (timeStamps[i] - timeStamps[i-1]) + " ms.<br>";
   }
   clock.style.display = "none";
 }
+}
+
 </script>
 
 </body>
