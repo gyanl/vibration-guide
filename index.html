@@ -12,18 +12,18 @@
 
   <center>
       <div id="clock" class="clock">
-        <button onclick="setActive(this.id)" type="button" name="12" id="btn1" class="btnstyle">12</button>
-        <button onclick="setActive(this.id)" type="button" name="1" id="btn2" class="btnstyle">1</button>
-        <button onclick="setActive(this.id)" type="button" name="2" id="btn3" class="btnstyle">2</button>
-        <button onclick="setActive(this.id)" type="button" name="3" id="btn4" class="btnstyle">3</button>
-        <button onclick="setActive(this.id)" type="button" name="4" id="btn5" class="btnstyle">4</button>
-        <button onclick="setActive(this.id)" type="button" name="5" id="btn6" class="btnstyle">5</button>
-        <button onclick="setActive(this.id)" type="button" name="6" id="btn7" class="btnstyle">6</button>
-        <button onclick="setActive(this.id)" type="button" name="7" id="btn8" class="btnstyle">7</button>
-        <button onclick="setActive(this.id)" type="button" name="8" id="btn9" class="btnstyle">8</button>
-        <button onclick="setActive(this.id)" type="button" name="9" id="btn10" class="btnstyle">9</button>
-        <button onclick="setActive(this.id)" type="button" name="10" id="btn11" class="btnstyle">10</button>
-        <button onclick="setActive(this.id)" type="button" name="11" id="btn12" class="btnstyle">11</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="12" id="btn1" class="btnstyle">12</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="1" id="btn2" class="btnstyle">1</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="2" id="btn3" class="btnstyle">2</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="3" id="btn4" class="btnstyle">3</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="4" id="btn5" class="btnstyle">4</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="5" id="btn6" class="btnstyle">5</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="6" id="btn7" class="btnstyle">6</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="7" id="btn8" class="btnstyle">7</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="8" id="btn9" class="btnstyle">8</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="9" id="btn10" class="btnstyle">9</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="10" id="btn11" class="btnstyle">10</button>
+        <button ondblclick="playSelected()" onclick="setActive(this.id)" type="button" name="11" id="btn12" class="btnstyle">11</button>
       </div>
     </center>
 
@@ -42,18 +42,18 @@
 
 <script>
 
-document.getElementById('btn1').addEventListener("dblclick", playAudio("1"));
-document.getElementById('btn2').addEventListener("dblclick", playAudio("2"));
-document.getElementById('btn3').addEventListener("dblclick", playAudio("3"));
-document.getElementById('btn4').addEventListener("dblclick", playAudio("4"));
-document.getElementById('btn5').addEventListener("dblclick", playAudio("5"));
-document.getElementById('btn6').addEventListener("dblclick", playAudio("6"));
-document.getElementById('btn7').addEventListener("dblclick", playAudio("7"));
-document.getElementById('btn8').addEventListener("dblclick", playAudio("8"));
-document.getElementById('btn9').addEventListener("dblclick", playAudio("9"));
-document.getElementById('btn10').addEventListener("dblclick", playAudio("10"));
-document.getElementById('btn11').addEventListener("dblclick", playAudio("11"));
-document.getElementById('btn12').addEventListener("dblclick", playAudio("12"));
+// document.getElementById('btn1').addEventListener("dblclick", playAudio("1"));
+// document.getElementById('btn2').addEventListener("dblclick", playAudio("2"));
+// document.getElementById('btn3').addEventListener("dblclick", playAudio("3"));
+// document.getElementById('btn4').addEventListener("dblclick", playAudio("4"));
+// document.getElementById('btn5').addEventListener("dblclick", playAudio("5"));
+// document.getElementById('btn6').addEventListener("dblclick", playAudio("6"));
+// document.getElementById('btn7').addEventListener("dblclick", playAudio("7"));
+// document.getElementById('btn8').addEventListener("dblclick", playAudio("8"));
+// document.getElementById('btn9').addEventListener("dblclick", playAudio("9"));
+// document.getElementById('btn10').addEventListener("dblclick", playAudio("10"));
+// document.getElementById('btn11').addEventListener("dblclick", playAudio("11"));
+// document.getElementById('btn12').addEventListener("dblclick", playAudio("12"));
 
 var timeStamps = new Array();
 var expLog = document.getElementById("expLog");
@@ -75,6 +75,12 @@ function startTest() {
 
 function playAudio(audioId){
   var sndloc = "audio/sel/"+audioId+".mp3";
+  var snd = new Audio(sndloc);
+  snd.play();
+}
+
+function playSelected(){
+  var sndloc = "audio/selected.mp3";
   var snd = new Audio(sndloc);
   snd.play();
 }
